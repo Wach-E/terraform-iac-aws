@@ -2,18 +2,6 @@ provider "aws" {
   region     = "us-west-2"
 }
 
-variable "cidr_blocks" {
-    description = "cidr block for network configuration"
-    type = list(object({
-        cidr_block = string,
-        name = string
-    }))
-}
-
-variable "env" {
-    description = "Environment of vpc"
-}
-
 resource "aws_vpc" "my-app-vpc" {
   cidr_block = var.cidr_blocks[0].cidr_block
   tags = {
